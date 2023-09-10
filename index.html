@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>?id=でテキストを変更する</title>
+    </head>
+
+    <body>
+        <p id="text1">ここにテキスト1が表示されます。</p>
+        <p id="text2">ここにテキスト2が表示されます。</p>
+
+        <script>
+            // ?id=で指定された文字列に対応するテキストを取得する
+            var id = location.search.substring(1);
+
+            // 取得した文字列に対応するテキストを作成
+            var texts = {};
+
+            switch (id) {
+                case "id=test":
+                    texts["text1"] = "テスト1";
+                    texts["text2"] = "テスト2";
+                    break;
+                case "id=example":
+                    texts["text1"] = "例1";
+                    texts["text2"] = "例2";
+                    break;
+                case "id=0":
+                    window.location.href = "links/0.html";
+                    break;
+                default:
+                    texts["text1"] = "無効なIDです。";
+                    texts["text2"] = "無効なIDです。";
+            }
+
+            // 取得したテキストをテキストに設定する
+            for (var key in texts) {
+                document.getElementById(key).textContent = texts[key];
+            }
+
+        </script>
+    </body>
+</html>
